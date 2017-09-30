@@ -1,21 +1,25 @@
 
+let trigger
 
 $(document).ready(function () {
     $('.inputField').on('keyup', (e) => {
-        $.ajax({
-            url: 'https://api.github.com/search/users',
-            data: {
-                sort: 'followers',
-                order: 'desc',
-                q: $(e.target).val()
-            },
-            success: (res) => {
-                loadUsers(res.items)
-            },
-            error: (err) => {
-                console.log(err)
-            }
-        })
+        clearTimeout(trigger)
+        trigger = setTimeout(() => {
+            $.ajax({
+                url: 'https://api.github.com/search/users',
+                data: {
+                    sort: 'followers',
+                    order: 'desc',
+                    q: $(e.target).val()
+                },
+                success: (res) => {
+                    loadUsers(res.items)
+                },
+                error: (err) => {
+                    console.log(err)
+                }
+            })
+        }, 500)
     })
 })
 
