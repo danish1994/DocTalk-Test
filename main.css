@@ -1,0 +1,12 @@
+.full-width{
+    width: 100%
+}
+
+.name{
+    font-size: 1em;
+}
+
+.username{
+    font-size: 1em;
+    color: gray;
+}
